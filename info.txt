@@ -1,0 +1,33 @@
+1.- Crear una clase que permite ingresar un numero, entero, y calcule e imprima si el numero es +,- o neutro.
+2.- Crear una clase que permita ingresar dos numeros enteros (short) y calcule e imprima el valor del numero mayor.}
+
+while(condicion)
+{
+
+}
+
+do
+{
+
+}
+while(condicion); <--- validaciones de datos
+
+counter=1
+for(i+1; condicion; incremento / decremento)
+{
+
+}
+
+3.- Crear una clase que permita ingresar 50 numeros (de tipo byte) y calcule e imprima la suma total de los numeros ingresados.
+
+TAREA:
+1.- 	Crear una clase que permita ingresar el nombre y el año de nacimiento para 500 personas, y calcule e imprima el nombre y la edad (al eño actual) 
+	para cada persona.
+2.-	Crear una clase que permita ingresar 1000 numeros enteros y calcule e imprima lo siguiente:
+	- Cantidad de numeros positivos, negativos y neutros ingresados.	
+	- Cantidad de numeros pares e impares ingresados.
+	- El promedio de los numeros impares positivos ingresados.
+	- El valor del numero menor ingresados.
+	% = 0 PAR
+	% = 1 IMPAR POSITIVO
+	% = -1 IMPAR NEGATIVO
