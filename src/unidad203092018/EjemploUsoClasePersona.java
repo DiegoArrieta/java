@@ -1,0 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package unidad203092018;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+
+/**
+ *
+ * @author zeuss
+ */
+public class EjemploUsoClasePersona 
+{
+    public static void main(String[] args) throws IOException 
+    {
+        BufferedReader x=new BufferedReader(new InputStreamReader(System.in));
+        Persona p1=new Persona();
+        Persona p2=new Persona("elba", "lazo", (byte)25);
+        System.out.println("nombre "+p1.getNombre()+" "+p1.getApellido()+" "+p1.getEdad());
+        System.out.println("nombre "+p2.getNombre()+" "+p2.getApellido()+" "+p2.getEdad());
+        p1.setNombre("armando");
+        p1.setEdad((byte)50);
+        System.out.println("nombre "+p1.getNombre()+" "+p1.getApellido()+" "+p1.getEdad());
+        p1.setNombre(x.readLine());
+        p1.setApellido(x.readLine());
+        p1.setEdad((byte) Integer.parseInt(x.readLine()));
+        System.out.println("nombre: "+p1.getNombre()+" Apellido: "+p1.getApellido()+" Edad: "+p1.getEdad());
+        
+    }
+
+    
+}
