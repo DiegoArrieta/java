@@ -27,10 +27,16 @@ public class EjemploUsoClasePersona
         p1.setNombre("armando");
         p1.setEdad((byte)50);
         System.out.println("nombre "+p1.getNombre()+" "+p1.getApellido()+" "+p1.getEdad());
-        p1.setNombre(x.readLine());
-        p1.setApellido(x.readLine());
-        p1.setEdad((byte) Integer.parseInt(x.readLine()));
-        System.out.println("nombre: "+p1.getNombre()+" Apellido: "+p1.getApellido()+" Edad: "+p1.getEdad());
+        System.out.println("");
+        System.out.println("Ingrese los siguientes datos:");
+        System.out.println("Nombre");
+        p2.setNombre(x.readLine());
+        System.out.println("Apellido");
+        p2.setApellido(x.readLine());
+        System.out.println("Edad");
+        
+        p2.setEdad((byte) Integer.parseInt(x.readLine()));
+        System.out.println("nombre: "+p2.getNombre()+" Apellido: "+p2.getApellido()+" Edad: "+p2.getEdad());
         
     }
 
