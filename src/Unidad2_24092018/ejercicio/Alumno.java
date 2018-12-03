@@ -71,16 +71,21 @@ public class Alumno
             Alumno a=new Alumno();
             System.out.println("Ingrese Nombre Alumno: ");
             a.setNombre(x.readLine());
-            System.out.println("Ingrese Nota1: ");
-            nota1 = Float.parseFloat(x.readLine());
-            a.setNota1(nota1);
+            do
+            {
+                System.out.println("Ingrese Nota1: ");
+                nota1 = Float.parseFloat(x.readLine());
+                a.setNota1(nota1);
+            }
+            while(a.getNota1()<1 && a.getNota1()>7);
+            
             System.out.println("Ingrese Nota2: ");
             nota2 = Float.parseFloat(x.readLine());
             a.setNota2(nota2);
             System.out.println("Ingrese Nota3: ");
             nota3 = Float.parseFloat(x.readLine());
             a.setNota3(nota3);
-            a.setPromedio((nota1+nota2+nota3)/3);
+            //a.setPromedio(calculoPromedio(; nota3));
             al[i]=a;
         }
         
@@ -90,8 +95,53 @@ public class Alumno
         byte i;
         for(i=0;i<al.length;i++)
         {
-            System.out.println("Alumno: "+al[i].getNombre()+" N1: "+al[i].getNota1()+" N2: "+al[i].getNota2()+" N3: "+al[i].getNota3()+" Promedio: "+al[i].getPromedio()+"");
+            System.out.println("Alumno: "+al[i].getNombre()+" N1: "+al[i].getNota1()+" N2: "+al[i].getNota2()+" N3: "+al[i].getNota3()+" Promedio: "+al[i].getPromedio());
         }
     }
+    private float calculoPromedio(float a, float b, float c)
+    {
+        float prom = (a+b+c)/3;
+        return prom;
+    }
+    
+    public float promedioCurso(Alumno[] al)
+    {
+        float ac=0, prom = 0;
+        byte i;
+        for(i=0;i<al.length;i++)
+        {
+            ac=ac+al[i].getPromedio();
+            prom = ac/al.length;
+        }
+        return prom;
+    }
+    public float promedioNota1(Alumno[] al)
+    {
+        float ac=0, prom = 0;
+        byte i;
+        for(i=0;i<al.length;i++)
+        {
+            ac=ac+al[i].getNota1();
+            prom = ac/al.length;
+        }
+        return prom;
+    }
+    public float buscarMenorPromedio(Alumno[] al)
+    {
+        float menProm=al[0].getPromedio();
+        byte i;
+        for(i=0;i<al.length;i++)
+        {
+            if(al[i].getPromedio()<menProm)
+            {
+                menProm=al[i].getPromedio();
+            }
+        
+        }
+        return menProm;
+        
+    }
+    
+    
     
 }

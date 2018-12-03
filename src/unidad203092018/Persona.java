@@ -18,6 +18,7 @@ public class Persona
 
     public Persona() 
     {
+        this.edad=30;
     }
 
     public Persona(String nombre, String apellido, byte edad) {

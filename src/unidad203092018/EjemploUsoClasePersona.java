@@ -42,3 +42,26 @@ public class EjemploUsoClasePersona
 
     
 }
+/**
+ *      visibilidad TipoDatoRetorno nombreMetodo(Lista_Parametros)
+ *         {
+ * 
+ * }
+ * Visibilidad
+ * public
+ * private
+ * protected
+ * 
+ * tipo de dato de retorno
+ * primitivos o cualquier otro
+ * char
+ * Byte
+ * Short
+ * Int
+ * Long
+ * Float
+ * Double
+ * String
+ * Boolean
+ * void 
+ */
