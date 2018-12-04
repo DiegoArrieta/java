@@ -17,7 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 import unidad5_clase26112018.MostrarProductos;
-import unidad5_clase26112018.Buscar;
+import unidad5_clase26112018.*;
+
 
 /**
  *
@@ -68,12 +69,13 @@ public class NewJFrame extends javax.swing.JFrame {
         btnActualizar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblResultado = new javax.swing.JTable();
-        jToolBar1 = new javax.swing.JToolBar();
+        barraProgreso = new javax.swing.JProgressBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuVenta = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -201,8 +203,6 @@ public class NewJFrame extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tblResultado);
 
-        jToolBar1.setRollover(true);
-
         menuVenta.setText("Menú");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
@@ -229,6 +229,14 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
         menuVenta.add(jMenuItem3);
+
+        jMenuItem4.setText("Buscador Between");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        menuVenta.add(jMenuItem4);
 
         jMenuBar1.add(menuVenta);
 
@@ -269,12 +277,10 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(barraProgreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 21, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -306,7 +312,8 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(barraProgreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         bindingGroup.bind();
@@ -333,6 +340,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         try 
         {
+            barraProgreso.setValue(10);
             //txtNombre.setEditable(false);
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             Connection cn;
@@ -341,6 +349,7 @@ public class NewJFrame extends javax.swing.JFrame {
             st=cn.createStatement();
             ResultSet rs;
             rs=st.executeQuery("select * from productos where codigo ="+txtCodigo.getText());
+            barraProgreso.setValue(50);
             boolean flag=true;
             while(rs.next())
             {
@@ -369,6 +378,9 @@ public class NewJFrame extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Error: "+ex);
         }
+        barraProgreso.setValue(100);
+        //barraProgreso.setValue(0);
+        
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
@@ -557,6 +569,11 @@ public class NewJFrame extends javax.swing.JFrame {
         Buscar b=new Buscar();
         b.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        BuscarValor v=new BuscarValor();
+        v.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
     public void limpiar()
     {
         txtCodigo.setText("");
@@ -618,6 +635,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JProgressBar barraProgreso;
     private javax.persistence.EntityManager bd2704PUEntityManager;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
@@ -635,10 +653,10 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu menuVenta;
     private java.util.List<ClaseSabado24.Productos> productosList;
     private java.util.List<ClaseSabado24.Productos> productosList1;
